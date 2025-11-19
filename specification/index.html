@@ -1,0 +1,2440 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The AFM specification defines a structured, markdown-based format for AI agents, enabling easy sharing, deployment, and understanding across platforms.">
+      
+      
+        <meta name="author" content="wso2">
+      
+      
+        <link rel="canonical" href="https://MaryamZi.github.io/agent-flavored-markdown-temp/specification/">
+      
+      
+        <link rel="prev" href="../topics/afm-connected-agent/">
+      
+      
+        <link rel="next" href="../visualizer/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>AFM Specification - AFM - Agent Flavored Markdown</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AFM - Agent Flavored Markdown" class="md-header__button md-logo" aria-label="AFM - Agent Flavored Markdown" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AFM - Agent Flavored Markdown
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AFM Specification
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/MaryamZi/agent-flavored-markdown-temp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MaryamZi/agent-flavored-markdown-temp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../topics/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Specification
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../visualizer/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Visualizer
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AFM - Agent Flavored Markdown" class="md-nav__button md-logo" aria-label="AFM - Agent Flavored Markdown" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    AFM - Agent Flavored Markdown
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/MaryamZi/agent-flavored-markdown-temp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MaryamZi/agent-flavored-markdown-temp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../topics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/why-afm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why AFM?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/afm-connected-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connected Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specification
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-key-goals-of-afm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Key Goals of AFM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Core Concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-file-format-and-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. File Format and Content
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-syntax-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Syntax Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Syntax Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-basic-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Basic Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-front-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Front Matter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-markdown-body" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Markdown Body
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-schema-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Schema Definitions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Schema Definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-about-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. About the Agent
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1. About the Agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#511-schema-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.1. Schema Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-field-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.2. Field Definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#513-example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.3. Example Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-agent-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Agent Interface
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2. Agent Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#521-schema-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.1. Schema Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#522-field-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.2. Field Definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#523-example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.3. Example Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3. Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531-schema-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.1. Schema Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532-field-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.2. Field Definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#533-example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.3. Example Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-agent-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Agent Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-protocol-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Protocol Extensions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Protocol Extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-model-context-protocol-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. Model Context Protocol (MCP)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1. Model Context Protocol (MCP)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#611-schema-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.1. Schema Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-field-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.2. Field Definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#613-example-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.3. Example Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-agent-to-agent-a2a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. Agent-to-Agent (A2A)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2. Agent-to-Agent (A2A)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#621-schema-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.1. Schema Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#622-field-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.2. Field Definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#623-example-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.3. Example Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-future-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Future Work
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualizer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visualizer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-key-goals-of-afm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Key Goals of AFM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Core Concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-file-format-and-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. File Format and Content
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-syntax-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Syntax Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Syntax Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-basic-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Basic Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-front-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Front Matter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-markdown-body" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Markdown Body
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-schema-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Schema Definitions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Schema Definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-about-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. About the Agent
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1. About the Agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#511-schema-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.1. Schema Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-field-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.2. Field Definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#513-example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.3. Example Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-agent-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Agent Interface
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2. Agent Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#521-schema-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.1. Schema Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#522-field-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.2. Field Definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#523-example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.3. Example Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3. Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531-schema-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.1. Schema Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532-field-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.2. Field Definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#533-example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.3. Example Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-agent-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Agent Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-protocol-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Protocol Extensions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Protocol Extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-model-context-protocol-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. Model Context Protocol (MCP)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1. Model Context Protocol (MCP)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#611-schema-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.1. Schema Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#612-field-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.2. Field Definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#613-example-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1.3. Example Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-agent-to-agent-a2a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. Agent-to-Agent (A2A)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2. Agent-to-Agent (A2A)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#621-schema-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.1. Schema Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#622-field-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.2. Field Definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#623-example-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2.3. Example Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-future-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Future Work
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+  <h1>Specification</h1>
+
+<h2 id="1-introduction">1. Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
+<p>AFM (Agent Flavored Markdown) provides a structured, markdown-based format for defining the capabilities, behaviors, and knowledge of AI agents. The goal is to create a universal standard that allows agents to be easily defined, shared, and deployed.</p>
+<p>AFM is designed to be composable. It supports not only the definition of individual agents but also complex, multi-agent systems where agents can expose services for other agents to consume.</p>
+<p>This document details the AFM file format, its syntax, and the schema for defining an agent.</p>
+<!-- The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [BCP 14](https://www.rfc-editor.org/info/bcp14) [[RFC2119](https://datatracker.ietf.org/doc/html/rfc2119)] [[RFC8174](https://datatracker.ietf.org/doc/html/rfc8174)] when, and only when, they appear in all capitals, as shown here. -->
+
+<h3 id="11-key-goals-of-afm">1.1. Key Goals of AFM<a class="headerlink" href="#11-key-goals-of-afm" title="Permanent link">&para;</a></h3>
+<p>AFM addresses the current fragmentation in the AI agent ecosystem by providing a unified standard for agent definition and interoperability:</p>
+<ul>
+<li><strong>Simple Syntax</strong>: Move away from complex, imperative code. AFM allows developers to <em>declare</em> an agent's properties, tools, and configurations in a simple, text-based format.</li>
+<li><strong>Human-Readability</strong>: AFM uses a simple, elegant markdown-based syntax that is intuitive for both developers and non-technical stakeholders to read, write, and understand.</li>
+<li><strong>Adaptable</strong>: By building the framework around a flexible format rather than embedding it deep within a programming language, we can evolve the standard alongside the fast-changing AI landscape.</li>
+<li><strong>Unified Experience</strong>: Provide a clean, declarative model that works seamlessly for both developers writing code and those using visual, low-code interfaces. The same AFM file can power both experiences.</li>
+<li><strong>Agent Duality</strong>: Natively support the dual nature of agents as both callable functions within an application (i.e. Ambiant Agent) and as exposable services (i.e. Chat Agent) for interoperability.</li>
+<li><strong>Interoperability</strong>: AFM provides a standard, unambiguous syntax for agent definition, ensuring that diverse platforms and tools can consistently use the same agent blueprint.</li>
+</ul>
+<h2 id="2-core-concepts">2. Core Concepts<a class="headerlink" href="#2-core-concepts" title="Permanent link">&para;</a></h2>
+<p>AFM is built around several core concepts that define how agents are structured and interact:</p>
+<ul>
+<li><strong>Agent</strong>: The primary entity defined in AFM, representing an AI agent with specific capabilities and behaviors.</li>
+<li><strong>Role</strong>: A specific function or set of responsibilities that an agent can perform, described in natural language within a specific context.</li>
+<li><strong>Instructions</strong>: Natural language directives that guide the agent's behavior and task execution, also known as the system prompt.</li>
+<li><strong>Agent Details</strong>: Programmatic metadata that describes the agent, including name, version, author, and other identifying information.</li>
+<li><strong>Tools</strong>: External tools and services available to the agent (via MCP).</li>
+<li><strong>Interface</strong>: Specifications for how agents expose themselves to the outside world, defining their callable signature and service endpoints.</li>
+<li><strong>Model</strong>: Configuration for the Large Language Model (LLM) used by the agent <em>(coming soon)</em>.</li>
+<li><strong>Memory</strong>: Mechanisms for how agents can store and retrieve information across interactions <em>(coming soon)</em>.</li>
+</ul>
+<h2 id="3-file-format-and-content">3. File Format and Content<a class="headerlink" href="#3-file-format-and-content" title="Permanent link">&para;</a></h2>
+<p>An agent definition file must use the <code>*.afm.md</code> or <code>.afm</code> extension. </p>
+<p>The filename (without extension) serves as the <strong>Agent Identifier</strong> - a unique identifier for the agent within its <a href="#field-namespace">namespace</a>. This identifier is <strong>REQUIRED</strong>.</p>
+<p><strong>Agent Identifier Rules:</strong>
+- Should not start with special characters, numbers, or whitespace
+- <strong>MUST</strong> be unique within the namespace to avoid conflicts </p>
+<p>The file content must be encoded in UTF-8. </p>
+<div class="admonition tip">
+<p class="admonition-title">Best Practices for Naming AFM Files</p>
+<p>When naming your AFM files, following these best practices is <strong>RECOMMENDED</strong> to ensure clarity and consistency:</p>
+<ul>
+<li>Use lowercase letters, numbers, and hyphens to separate words.</li>
+<li>Avoid spaces and special characters to ensure compatibility across different systems.</li>
+</ul>
+</div>
+<h2 id="4-syntax-overview">4. Syntax Overview<a class="headerlink" href="#4-syntax-overview" title="Permanent link">&para;</a></h2>
+<h3 id="41-basic-structure">4.1. Basic Structure<a class="headerlink" href="#41-basic-structure" title="Permanent link">&para;</a></h3>
+<p>An AFM file is structured into two main sections: the front matter and the agent declaration.</p>
+<ul>
+<li><strong>Front Matter</strong>: Contains metadata about the agent.</li>
+<li><strong>Markdown Body</strong>: Contains the agent's main declaration.</li>
+</ul>
+<h3 id="42-front-matter">4.2. Front Matter<a class="headerlink" href="#42-front-matter" title="Permanent link">&para;</a></h3>
+<p>The front matter is a YAML block at the top of the file, enclosed by <code>---</code> lines. Refer to the <a href="https://yaml.org/spec/1.2/spec.html">YAML specification</a> for more details on YAML syntax.</p>
+<p>This section contains metadata about the agent. These metadata fields are <strong>OPTIONAL</strong> and can be used to provide additional context or configuration for the agent.</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#51-about-the-agent">Agent Details</a></td>
+<td>Information about the agent, such as its name, description, version, and author.</td>
+</tr>
+<tr>
+<td><a href="#52-agent-interface">Agent Interface</a></td>
+<td>Defines how the agent is invoked and its input/output signature.</td>
+</tr>
+<tr>
+<td><a href="#53-tools">Agent Tools</a></td>
+<td>Defines external tools available to the agent (e.g., via MCP).</td>
+</tr>
+<tr>
+<td><a href="#54-agent-resources">Agent Resources</a></td>
+<td>Coming soon</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to the <a href="#5-schema-definitions">AFM Schema</a> for a complete list of fields and their meanings.</p>
+<h3 id="43-markdown-body">4.3.  Markdown Body<a class="headerlink" href="#43-markdown-body" title="Permanent link">&para;</a></h3>
+<p>This section contains the detailed, natural language instructions that guide the agent's behavior. Use headings (<code>#</code>, <code>##</code>, etc.) to structure the prompt.
+Users can use markdown syntax to format the text, including lists, links, and code blocks.</p>
+<p>The Markdown body <strong>SHOULD</strong> contain the following headings, with corresponding content</p>
+<ul>
+<li><code># Role</code>: A brief description of the agent's role.</li>
+<li><code># Instructions</code>: A list of the agent's instructions for system prompt</li>
+</ul>
+<h3 id="44-example">4.4. Example<a class="headerlink" href="#44-example" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">Basic AFM File Example</p>
+<p>Here is a simple example of an AFM file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nn">---</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Math</span><span class="nv"> </span><span class="s">Tutor&quot;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;An</span><span class="nv"> </span><span class="s">AI</span><span class="nv"> </span><span class="s">assistant</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">helps</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">mathematics</span><span class="nv"> </span><span class="s">problems&quot;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;education&quot;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nt">authors</span><span class="p">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Jane</span><span class="nv"> </span><span class="s">Smith</span><span class="nv"> </span><span class="s">&lt;jane@example.com&gt;&quot;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">license</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MIT&quot;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nn">---</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># Role</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="l l-Scalar l-Scalar-Plain">The Math Tutor is an AI agent designed to assist students with mathematics problems, providing explanations, step-by-step solutions, and practice exercises.</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="l l-Scalar l-Scalar-Plain"># Instructions</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="l l-Scalar l-Scalar-Plain">- Use clear and concise language when explaining concepts.</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="l l-Scalar l-Scalar-Plain">- Provide examples to illustrate complex ideas.</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="l l-Scalar l-Scalar-Plain">- Encourage students to think critically and solve problems independently.</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="l l-Scalar l-Scalar-Plain">- Answer questions about mathematical concepts</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="l l-Scalar l-Scalar-Plain">- Solve equations and provide step-by-step solutions</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="l l-Scalar l-Scalar-Plain">- Generate practice problems and quizzes when requested</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="l l-Scalar l-Scalar-Plain">- Provide explanations and tips for solving math problems</span>
+</code></pre></div>
+</div>
+<h2 id="5-schema-definitions">5. Schema Definitions<a class="headerlink" href="#5-schema-definitions" title="Permanent link">&para;</a></h2>
+<p>This section defines the schema for the Front Matter. For clarity, the schema is divided into several subsections, each detailing a specific aspect of the Agent.</p>
+<h3 id="51-about-the-agent">5.1. About the Agent<a class="headerlink" href="#51-about-the-agent" title="Permanent link">&para;</a></h3>
+<p>This section defines the schema for agent-specific metadata. It is <strong>OPTIONAL</strong> but recommended for clarity and organization.</p>
+<p>AFM implementations <strong>SHALL</strong> use this section to display the agent's metadata in user interfaces to provide better user experience for end users.</p>
+<h4 id="511-schema-overview">5.1.1. Schema Overview<a class="headerlink" href="#511-schema-overview" title="Permanent link">&para;</a></h4>
+<p>The agent metadata fields are specified in the YAML frontmatter of an AFM file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Agent metadata schema</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">           </span><span class="c1"># The name of the agent</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">    </span><span class="c1"># Brief description of the agent&#39;s purpose and functionality</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">        </span><span class="c1"># Semantic version (e.g., &quot;1.0.0&quot;)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">      </span><span class="c1"># Logical grouping category for the agent</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">         </span><span class="c1"># Single author in format &quot;Name &lt;Email&gt;&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nt">authors</span><span class="p">:</span><span class="w">               </span><span class="c1"># Takes precedence over author field if both exist</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">             </span><span class="c1"># Multiple authors, each in format &quot;Name &lt;Email&gt;&quot;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span><span class="w">       </span><span class="c1"># Agent provider</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nt">organization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"> </span><span class="c1"># Name of the organization</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">          </span><span class="c1"># URL to the organization&#39;s website</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nt">iconUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">        </span><span class="c1"># URL to an icon representing the agent</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nt">license</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">        </span><span class="c1"># License under which the agent is released</span>
+</code></pre></div>
+<h4 id="agent-field-definitions">5.1.2. Field Definitions<a class="headerlink" href="#agent-field-definitions" title="Permanent link">&para;</a></h4>
+<p>Each field serves a specific purpose in defining and organizing the agent:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="field-name"></a><a href="#field-name"><code>name</code></a></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Identifies the agent in human-readable form.<br>Default: inferred from the filename of the AFM file.<br>AFM implementations <strong>SHALL</strong> use this field to display the agent's name in user interfaces.</td>
+</tr>
+<tr>
+<td><a id="field-description"></a><a href="#field-description"><code>description</code></a></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Provides a concise summary of what the agent does.<br>Default: inferred from the markdown body <code># Role</code> section.<br>AFM implementations <strong>SHALL</strong> use this field to display the agent's description in user interfaces.</td>
+</tr>
+<tr>
+<td><a id="field-version"></a><a href="#field-version"><code>version</code></a></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><a href="https://semver.org/">Semantic version</a> of the agent definition (MAJOR.MINOR.PATCH).<br>Default: "0.0.0".<br>AFM implementations <strong>SHALL</strong> use this field to display the agent's version in user interfaces.</td>
+</tr>
+<tr>
+<td><a id="field-namespace"></a><a href="#field-namespace"><code>namespace</code></a></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Logical grouping category for the agent.<br>Default: "default".<br>AFM implementations <strong>SHALL</strong> use this field to organize agents into logical groups or categories.</td>
+</tr>
+<tr>
+<td><a id="field-author"></a><a href="#field-author"><code>author</code></a></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Single author in format <code>Name &lt;Email&gt;</code>.<br>Credits the creator of the agent definition. If both <code>author</code> and <code>authors</code> fields are provided, <code>authors</code> takes precedence.</td>
+</tr>
+<tr>
+<td><a id="field-authors"></a><a href="#field-authors"><code>authors</code></a></td>
+<td><code>string[]</code></td>
+<td>No</td>
+<td>Multiple authors, each in format <code>Name &lt;Email&gt;</code>.<br>Credits the creators of the agent definition. Takes precedence over <code>author</code> if both exist.</td>
+</tr>
+<tr>
+<td><a id="field-iconurl"></a><a href="#field-iconurl"><code>iconUrl</code></a></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL to an icon representing the agent.<br>This is <strong>OPTIONAL</strong> but recommended for visual representation in user interfaces.<br>AFM implementations <strong>SHALL</strong> use this field to display the agent's icon in user interfaces.</td>
+</tr>
+<tr>
+<td><a id="field-provider"></a><a href="#field-provider"><code>provider</code></a></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Information about the organization providing the agent.<br>This is <strong>OPTIONAL</strong> but recommended for attribution.<br>See the <a href="#provider-object">Provider Object</a> below for details.</td>
+</tr>
+<tr>
+<td><a id="field-license"></a><a href="#field-license"><code>license</code></a></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>License under which the agent definition is released.<br>This is <strong>OPTIONAL</strong> but recommended for clarity.</td>
+</tr>
+</tbody>
+</table>
+<p><strong><a id="provider-object"></a>Provider Object:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="field-provider-organization"></a><a href="#field-provider-organization"><code>provider.organization</code></a></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the organization providing the agent.</td>
+</tr>
+<tr>
+<td><a id="field-provider-url"></a><a href="#field-provider-url"><code>provider.url</code></a></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL to the organization's website.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="513-example-usage">5.1.3. Example Usage<a class="headerlink" href="#513-example-usage" title="Permanent link">&para;</a></h4>
+<p>Here's an example of agent metadata in an AFM file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nn">---</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Math</span><span class="nv"> </span><span class="s">Tutor&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;An</span><span class="nv"> </span><span class="s">AI</span><span class="nv"> </span><span class="s">assistant</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">helps</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">mathematics</span><span class="nv"> </span><span class="s">problems&quot;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.2.0&quot;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;education&quot;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nt">authors</span><span class="p">:</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Jane</span><span class="nv"> </span><span class="s">Smith</span><span class="nv"> </span><span class="s">&lt;jane@example.com&gt;&quot;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;John</span><span class="nv"> </span><span class="s">Doe</span><span class="nv"> </span><span class="s">&lt;john@example.com&gt;&quot;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nt">provider</span><span class="p">:</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="nt">organization</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Example</span><span class="nv"> </span><span class="s">AI</span><span class="nv"> </span><span class="s">Solutions&quot;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="nt">iconUrl</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://example.com/icons/math-tutor.png&quot;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nt">license</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;MIT&quot;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="nn">---</span>
+</code></pre></div>
+<h3 id="52-agent-interface">5.2. Agent Interface<a class="headerlink" href="#52-agent-interface" title="Permanent link">&para;</a></h3>
+<p>This section defines the agent's public "API" or "function signature." It is <strong>OPTIONAL</strong> and specifies how the agent receives inputs and produces outputs.</p>
+<p>Default values will be used if the interface is not explicitly defined. Users can override the default values by specifying the <code>interface</code> field in the front matter.</p>
+<p><strong>Default Behavior:</strong>
+- The default <code>type</code> is <code>function</code>, which means the agent is callable within an application
+- The default <code>signature</code> (for both <code>function</code> and <code>service</code> types) includes:
+  - One string input parameter named <code>user_prompt</code>
+  - One string output parameter named <code>response</code></p>
+<p>AFM implementations <strong>SHALL</strong> use this definition to generate the agent's callable interface and to ensure consistent behavior across different platforms. </p>
+<h4 id="521-schema-overview">5.2.1. Schema Overview<a class="headerlink" href="#521-schema-overview" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">interface</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">           </span><span class="c1"># The invocation style: &#39;service&#39; or &#39;function&#39;.</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">signature</span><span class="p">:</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">object</span><span class="p p-Indicator">]</span><span class="w">      </span><span class="c1"># A list of input parameter objects.</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">object</span><span class="p p-Indicator">]</span><span class="w">     </span><span class="c1"># A list of output parameter objects.</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="nt">exposure</span><span class="p">:</span><span class="w">              </span><span class="c1"># Optional, for &#39;service&#39; type agents.</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nt">http</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span><span class="w">         </span><span class="c1"># Configuration for exposing as an HTTP endpoint.</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nt">a2a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span><span class="w">          </span><span class="c1"># Configuration for exposing as an A2A-compliant service.</span>
+</code></pre></div>
+<h4 id="522-field-definitions">5.2.2. Field Definitions<a class="headerlink" href="#522-field-definitions" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The agent's invocation style. Must be one of:<br>- <code>service</code>: A network-accessible agent.<br>- <code>function</code>: An agent callable within an application.</td>
+</tr>
+<tr>
+<td><code>signature</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Defines the agent's input and output parameters. See <a href="#signature-object">Signature Object</a>.</td>
+</tr>
+<tr>
+<td><code>exposure</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Configuration for how a <code>service</code> agent is exposed. See <a href="#exposure-object">Exposure Object</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><a id="signature-object"></a>
+<strong>Signature Object:</strong></p>
+<p>Defines the data contract for the agent.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of objects, each defining a named input parameter. The dynamic "user prompt" should be defined here.</td>
+</tr>
+<tr>
+<td><code>output</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of objects, each defining a named output parameter.</td>
+</tr>
+</tbody>
+</table>
+<p>Each <code>input</code> or <code>output</code> object has the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>The name of the parameter (e.g., <code>user_prompt</code>).</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>The data type. Common types include: <code>string</code>, <code>number</code>, <code>boolean</code>, <code>json</code>, <code>array</code>, <code>file</code>. The full set of supported types is implementation-specific.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>string</code></td>
+<td>A brief explanation of the parameter.</td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td><code>boolean</code></td>
+<td>(For <code>input</code> only) Whether the parameter is mandatory.</td>
+</tr>
+</tbody>
+</table>
+<p><a id="exposure-object"></a>
+<strong>Exposure Object:</strong></p>
+<p>Contains configurations for <code>service</code> agents.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>http</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Defines how to expose the agent via a standard HTTP endpoint.</td>
+</tr>
+<tr>
+<td><code>a2a</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Defines how the agent is exposed and discovered within an A2A network. See <a href="#62-agent-to-agent-a2a">Section 6.2</a> for Agent Card details.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">WIP</p>
+<p>Work in progress: There are more details to be added for <code>http</code> and <code>a2a</code> exposure configurations. Also there are more other exposure types planned for future versions of AFM.</p>
+</div>
+<p><strong><a id="http-object"></a>HTTP Object:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The URL path segment for the agent's HTTP endpoint (e.g., <code>/math-tutor</code>).</td>
+</tr>
+<tr>
+<td><code>authentication</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Optional authentication configuration for the HTTP endpoint. Uses the same schema as the MCP <a href="#authentication-object">Authentication Object</a>.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">HTTP Object Usage</p>
+<p>The <code>http</code> object is only applicable for agents of type <code>service</code>. It defines how the agent is exposed via a standard HTTP endpoint, allowing other systems to interact with it over the web.</p>
+<p>AFM does not define the HTTP methods (GET, POST, etc.) for the agent's endpoint. This is left to the implementation to decide based on the agent's functionality and requirements.</p>
+<p>HTTP authentication follows the same pattern as MCP authentication, where the <code>type</code> field specifies the authentication scheme (e.g., <code>oauth2</code>, <code>api_key</code>), and the agent's host environment is responsible for managing the actual credentials and authentication flow.</p>
+</div>
+<h4 id="523-example-usage">5.2.3. Example Usage<a class="headerlink" href="#523-example-usage" title="Permanent link">&para;</a></h4>
+<p>Here's an example of a service agent with custom interface and multiple exposure types:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">interface</span><span class="p">:</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">signature</span><span class="p">:</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">input</span><span class="p">:</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user_prompt</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;The</span><span class="nv"> </span><span class="s">user&#39;s</span><span class="nv"> </span><span class="s">query</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">request&quot;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">context</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">json</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Additional</span><span class="nv"> </span><span class="s">context</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">request&quot;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="nt">output</span><span class="p">:</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">response</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;The</span><span class="nv"> </span><span class="s">agent&#39;s</span><span class="nv"> </span><span class="s">response</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">user</span><span class="nv"> </span><span class="s">prompt&quot;</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">confidence</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Confidence</span><span class="nv"> </span><span class="s">score</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">response&quot;</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">  </span><span class="nt">exposure</span><span class="p">:</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="nt">http</span><span class="p">:</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/research-assistant&quot;</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="nt">a2a</span><span class="p">:</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">      </span><span class="nt">discoverable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">      </span><span class="nt">agent_card</span><span class="p">:</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Research</span><span class="nv"> </span><span class="s">Assistant&quot;</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Expert</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">finding,</span><span class="nv"> </span><span class="s">analyzing,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">summarizing</span><span class="nv"> </span><span class="s">research</span><span class="nv"> </span><span class="s">papers&quot;</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://example.com/icons/research-assistant.png&quot;</span>
+</code></pre></div>
+<h3 id="53-tools">5.3. Tools<a class="headerlink" href="#53-tools" title="Permanent link">&para;</a></h3>
+<p>This section defines which external tools and resources the agent can access.</p>
+<h4 id="531-schema-overview">5.3.1. Schema Overview<a class="headerlink" href="#531-schema-overview" title="Permanent link">&para;</a></h4>
+<p>The tools fields are specified in the YAML frontmatter of an AFM file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">tools</span><span class="p">:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">mcp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span><span class="w">         </span><span class="c1"># Configuration for connecting to MCP tools.</span>
+</code></pre></div>
+<h4 id="532-field-definitions">5.3.2. Field Definitions<a class="headerlink" href="#532-field-definitions" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tools</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Container for protocol-specific tool connection configurations.</td>
+</tr>
+<tr>
+<td><code>tools.mcp</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Configuration for Model Context Protocol. See <a href="#61-model-context-protocol-mcp">Section 6.1</a> for details.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>MCP Object:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>servers</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>List of MCP servers to connect to. See <a href="#61-model-context-protocol-mcp">Section 6.1</a> for detailed schema.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="533-example-usage">5.3.3. Example Usage<a class="headerlink" href="#533-example-usage" title="Permanent link">&para;</a></h4>
+<p>Here's a simple example of tools in an AFM file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">tools</span><span class="p">:</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">mcp</span><span class="p">:</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">servers</span><span class="p">:</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;github_api&quot;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="nt">transport</span><span class="p">:</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http_sse&quot;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">          </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://mcp.github.com/api&quot;</span>
+</code></pre></div>
+<h3 id="54-agent-resources">5.4. Agent Resources<a class="headerlink" href="#54-agent-resources" title="Permanent link">&para;</a></h3>
+<p>This section defines the schema for resources that an agent can access or utilize from the implementation environment. These resources can be models, memory or other data sources that the agent can leverage to perform its tasks.</p>
+<p>This section is <strong>OPTIONAL</strong>. </p>
+<div class="admonition warning">
+<p class="admonition-title">WIP</p>
+<p>Work in progress: The schema for agent resources is still under development. This section will be updated in future versions of the AFM specification.</p>
+</div>
+<h2 id="6-protocol-extensions">6. Protocol Extensions<a class="headerlink" href="#6-protocol-extensions" title="Permanent link">&para;</a></h2>
+<p>This section provides detailed specifications for the protocols referenced in above schema. These protocols enable agents to communicate with external systems and other agents.</p>
+<h3 id="61-model-context-protocol-mcp">6.1. Model Context Protocol (MCP)<a class="headerlink" href="#61-model-context-protocol-mcp" title="Permanent link">&para;</a></h3>
+<p>The Model Context Protocol (MCP) enables agents to connect to external tools and data sources.</p>
+<h4 id="611-schema-overview">6.1.1. Schema Overview<a class="headerlink" href="#611-schema-overview" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">mcp</span><span class="p">:</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">servers</span><span class="p">:</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">           </span><span class="c1"># Unique identifier for the server connection</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">      </span><span class="nt">transport</span><span class="p">:</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">         </span><span class="c1"># Transport mechanism (http_sse, stdio, streamable_http)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">          </span><span class="c1"># URL endpoint (for http_sse and streamable_http)</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">      </span><span class="c1"># Shell command (for stdio)</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">      </span><span class="nt">authentication</span><span class="p">:</span><span class="w">        </span><span class="c1"># Optional</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">         </span><span class="c1"># Authentication scheme (oauth2, api_key, etc.)</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">      </span><span class="nt">tool_filter</span><span class="p">:</span><span class="w">           </span><span class="c1"># Optional</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="nt">allow</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">string</span><span class="p p-Indicator">]</span><span class="w">      </span><span class="c1"># Whitelist of tools in &quot;tool_name&quot; format</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="nt">deny</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">string</span><span class="p p-Indicator">]</span><span class="w">       </span><span class="c1"># Blacklist of tools in &quot;tool_name&quot; format</span>
+</code></pre></div>
+<h4 id="612-field-definitions">6.1.2. Field Definitions<a class="headerlink" href="#612-field-definitions" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>servers</code></td>
+<td>Array</td>
+<td>Yes</td>
+<td>Specifies the MCP servers that the agent can connect to. Each server entry must have a unique <code>name</code> that identifies the connection.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Server Object:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>A unique, human-readable identifier for the connection.</td>
+</tr>
+<tr>
+<td><code>transport</code></td>
+<td>Object</td>
+<td>Yes</td>
+<td>An object defining the communication mechanism. See <a href="#transport-object">Transport Object</a> below.</td>
+</tr>
+<tr>
+<td><code>authentication</code></td>
+<td>Object</td>
+<td>No</td>
+<td>An object declaring the required authentication scheme. See <a href="#authentication-object">Authentication Object</a> below.</td>
+</tr>
+<tr>
+<td><code>tool_filter</code></td>
+<td>Object</td>
+<td>No</td>
+<td>Filter configuration for tools from this server. See <a href="#tool-filter-object">Tool Filter Object</a> below.</td>
+</tr>
+</tbody>
+</table>
+<p><strong><a id="transport-object"></a>Transport Object:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Transport mechanism, which must be one of:<br>- <code>http_sse</code>: Server-Sent Events over HTTP<br>- <code>stdio</code>: Standard input/output for local processes<br>- <code>streamable_http</code>: HTTP with streaming capabilities</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>String</td>
+<td>For HTTP types</td>
+<td>The URL endpoint of the remote MCP server.</td>
+</tr>
+<tr>
+<td><code>command</code></td>
+<td>String</td>
+<td>For stdio</td>
+<td>The shell command used to start the local MCP server process.</td>
+</tr>
+</tbody>
+</table>
+<p><strong><a id="authentication-object"></a>Authentication Object:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>Yes</td>
+<td>Authentication scheme (e.g., <code>oauth2</code>, <code>api_key</code>).<br>The agent's host environment is responsible for managing the actual credentials and authentication flow.</td>
+</tr>
+</tbody>
+</table>
+<p><strong><a id="tool-filter-object"></a>Tool Filter Object:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>allow</code></td>
+<td>String Array</td>
+<td>No</td>
+<td>A whitelist of tools to expose from this server, using just the tool name (e.g., <code>create_issue</code>, <code>read_file</code>). If specified, only these tools are available.</td>
+</tr>
+<tr>
+<td><code>deny</code></td>
+<td>String Array</td>
+<td>No</td>
+<td>A blacklist of tools to hide from this server, using just the tool name (e.g., <code>write_file</code>). Applied after <code>allow</code> filtering.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Filter Precedence</p>
+<p>When both <code>allow</code> and <code>deny</code> are specified:
+1. First, if <code>allow</code> is present, only the tools in the allow list are made available
+2. Then, <code>deny</code> is applied to remove specific tools from that filtered set</p>
+<p>If only <code>deny</code> is specified, all tools from the server are available except those in the deny list.</p>
+</div>
+<h4 id="613-example-implementation">6.1.3. Example Implementation<a class="headerlink" href="#613-example-implementation" title="Permanent link">&para;</a></h4>
+<p>This example defines tool connections to a remote GitHub MCP server (requiring OAuth 2.0) and a local filesystem server. Each server has its own tool filter configuration.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">tools</span><span class="p">:</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">mcp</span><span class="p">:</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nt">servers</span><span class="p">:</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github_mcp_server</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">        </span><span class="nt">transport</span><span class="p">:</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_sse</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">          </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://mcp.github.com/api&quot;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="nt">authentication</span><span class="p">:</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oauth2</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">        </span><span class="nt">tool_filter</span><span class="p">:</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">          </span><span class="nt">allow</span><span class="p">:</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;create_issue&quot;</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;list_repositories&quot;</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_filesystem_server</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">        </span><span class="nt">transport</span><span class="p">:</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stdio</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;npx</span><span class="nv"> </span><span class="s">-y</span><span class="nv"> </span><span class="s">@modelcontextprotocol/server-filesystem&quot;</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">        </span><span class="nt">tool_filter</span><span class="p">:</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="w">          </span><span class="nt">allow</span><span class="p">:</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;read_file&quot;</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="w">          </span><span class="nt">deny</span><span class="p">:</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;write_file&quot;</span>
+</code></pre></div>
+<h3 id="62-agent-to-agent-a2a">6.2. Agent-to-Agent (A2A)<a class="headerlink" href="#62-agent-to-agent-a2a" title="Permanent link">&para;</a></h3>
+<p>The Agent-to-Agent Protocol (A2A) enables agents to expose themselves as services that other agents can discover and call, forming a multi-agent system where tasks can be delegated and information can be shared.</p>
+<h4 id="621-schema-overview">6.2.1. Schema Overview<a class="headerlink" href="#621-schema-overview" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">interface</span><span class="p">:</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">exposure</span><span class="p">:</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="nt">a2a</span><span class="p">:</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">      </span><span class="nt">discoverable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span><span class="w">  </span><span class="c1"># Whether the agent should be discoverable by other agents</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">      </span><span class="nt">agent_card</span><span class="p">:</span><span class="w">            </span><span class="c1"># Optional metadata for agent discovery</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">         </span><span class="c1"># Display name for the agent in service directories</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">  </span><span class="c1"># Brief description of the agent&#39;s service capabilities</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">         </span><span class="c1"># URL to an icon representing the agent service</span>
+</code></pre></div>
+<h4 id="622-field-definitions">6.2.2. Field Definitions<a class="headerlink" href="#622-field-definitions" title="Permanent link">&para;</a></h4>
+<p><strong>A2A Exposure Object:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>discoverable</code></td>
+<td>Boolean</td>
+<td>No</td>
+<td>Controls whether the agent is listed in service directories for other agents to find. Default: <code>true</code> when exposing as a service.</td>
+</tr>
+<tr>
+<td><code>agent_card</code></td>
+<td>Object</td>
+<td>No</td>
+<td>Contains metadata used when the agent is listed in service directories. See <a href="#agent-card-object">Agent Card Object</a> below.</td>
+</tr>
+</tbody>
+</table>
+<p><strong><a id="agent-card-object"></a>Agent Card Object:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>No</td>
+<td>Display name for the agent in service directories. Default: Uses the agent's name from its metadata.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String</td>
+<td>No</td>
+<td>Brief description of what services the agent provides. Default: Uses the agent's description from its metadata.</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>String</td>
+<td>No</td>
+<td>URL to an icon representing the agent service. Default: Uses the agent's iconUrl from its metadata.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="623-example-implementation">6.2.3. Example Implementation<a class="headerlink" href="#623-example-implementation" title="Permanent link">&para;</a></h4>
+<p>This example defines an agent that exposes itself as a discoverable A2A service with custom agent card information:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">interface</span><span class="p">:</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="nt">exposure</span><span class="p">:</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="nt">http</span><span class="p">:</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/research-assistant&quot;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="nt">a2a</span><span class="p">:</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">      </span><span class="nt">discoverable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">      </span><span class="nt">agent_card</span><span class="p">:</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Research</span><span class="nv"> </span><span class="s">Assistant&quot;</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Expert</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">finding,</span><span class="nv"> </span><span class="s">analyzing,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">summarizing</span><span class="nv"> </span><span class="s">research</span><span class="nv"> </span><span class="s">papers&quot;</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">        </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://example.com/icons/research-assistant.png&quot;</span>
+</code></pre></div>
+<h2 id="7-future-work">7. Future Work<a class="headerlink" href="#7-future-work" title="Permanent link">&para;</a></h2>
+<p>This section outlines potential future enhancements to the AFM specification, including:</p>
+<ul>
+<li>Model configuration for specifying the Large Language Model (LLM) used by the agent.</li>
+<li>Memory management for agents to store and retrieve information across interactions.</li>
+<li>Configurable support for Agent declaration. </li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/wso2/agent-flavored-markdown" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="github" checked>
+      <span class="task-list-indicator"></span>
+      GitHub
+    </label>
+  </li>
+
+      
+    
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.annotate", "content.code.copy", "content.tabs.link", "content.cards", "header.autohide", "announce.dismiss"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
